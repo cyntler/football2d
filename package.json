@@ -1,0 +1,19 @@
+{
+  "name": "football2d",
+  "version": "1.0.0",
+  "description": "2D Football Engine using HTML Canvas.",
+  "keywords": [
+    "2d",
+    "football",
+    "engine",
+    "soccer",
+    "game",
+    "simulator"
+  ],
+  "main": "index.js",
+  "author": "cyntler",
+  "license": "MIT",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
