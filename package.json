@@ -15,7 +15,7 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "preview": "webpack serve"
+    "preview": "webpack serve --open"
   },
   "devDependencies": {
     "@babel/core": "^7.15.5",
