@@ -22,6 +22,7 @@ export default {
     new HtmlPlugin({
       template: './src/preview/index.html',
       inject: 'body',
+      favicon: './src/preview/favicon.ico',
     }),
   ],
 };
