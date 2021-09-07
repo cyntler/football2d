@@ -1,8 +1,8 @@
-import { prepareField, startMatch } from '../index';
+import { createFieldRenderer, startMatch } from '../index';
 import { Team } from '../types';
 
-const root = document.querySelector('main');
-const field = prepareField(root);
+const rootEl = document.querySelector('main');
+const fieldRenderer = createFieldRenderer(rootEl);
 
 const homeTeam: Team = {
   name: 'Hello',
@@ -16,4 +16,4 @@ const awayTeam: Team = {
   players: [],
 };
 
-startMatch(field, homeTeam, awayTeam);
+startMatch(fieldRenderer, homeTeam, awayTeam);
