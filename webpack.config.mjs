@@ -9,7 +9,7 @@ export default {
   entry: './src/preview/index.ts',
   output: {
     path: join(currentDir, 'preview'),
-    filename: 'bundle.[fullHash].js',
+    filename: 'bundle.[fullhash].js',
     publicPath: '/',
   },
   resolve: {
