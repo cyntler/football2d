@@ -1,3 +1,8 @@
+export interface FieldRenderer {
+  container: HTMLDivElement;
+  canvasContext: CanvasRenderingContext2D;
+  handleOnResize: () => void;
+}
 export interface Team {
   name: string;
   coachName: string;
@@ -14,5 +19,3 @@ export type PlayerPosition =
   | 'defender'
   | 'midfielder'
   | 'forward';
-
-export type Field = CanvasRenderingContext2D;
