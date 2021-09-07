@@ -1,4 +1,5 @@
-import { prepareField } from './prepareField';
+import { createFieldRenderer } from './createFieldRenderer';
+import { removeFieldRenderer } from './removeFieldRenderer';
 import { startMatch } from './startMatch';
 
-export { prepareField, startMatch };
+export { createFieldRenderer, removeFieldRenderer, startMatch };
