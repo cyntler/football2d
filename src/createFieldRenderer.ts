@@ -26,8 +26,6 @@ const updateContainerHeight = (container: HTMLDivElement) => {
   container.style.height = `${calculateContainerHeight(container)}px`;
 };
 
-const handleOnResize = (container: HTMLDivElement) => () => {};
-
 export const createFieldRenderer = (targetEl: HTMLElement): FieldRenderer => {
   if (!targetEl) {
     throw new Error(`Target HTML [${targetEl}] element doesn't exists!`);
