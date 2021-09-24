@@ -1,28 +1,25 @@
-import { dirname, join } from 'path';
+import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
-import HtmlPlugin from 'html-webpack-plugin';
+import nodeExternals from 'webpack-node-externals';
 
-const currentDir = dirname(fileURLToPath(import.meta.url));
+export const currentDir = dirname(fileURLToPath(import.meta.url));
 
 export default {
-  mode: 'development',
-  entry: './src/preview/index.ts',
+  mode: 'production',
+  entry: './src/index.ts',
   output: {
-    path: join(currentDir, 'preview'),
-    filename: 'bundle.[fullhash].js',
-    publicPath: '/',
+    path: join(currentDir, 'lib'),
+    filename: 'index.js',
+    library: {
+      type: 'commonjs',
+    },
+    clean: true,
   },
+  externals: [nodeExternals()],
   resolve: {
     extensions: ['.js', '.json', '.ts'],
   },
   module: {
     rules: [{ test: /\.ts$/, use: ['babel-loader'] }],
   },
-  plugins: [
-    new HtmlPlugin({
-      template: './src/preview/index.html',
-      inject: 'body',
-      favicon: './src/preview/favicon.ico',
-    }),
-  ],
 };
