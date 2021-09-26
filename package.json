@@ -10,9 +10,9 @@
     "game",
     "simulator"
   ],
+  "author": "Damian Cyntler",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
-  "author": "cyntler",
   "license": "MIT",
   "type": "module",
   "scripts": {
