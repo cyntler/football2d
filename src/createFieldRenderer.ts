@@ -10,11 +10,12 @@ const createContainer = () => {
   return rootEl;
 };
 
-const createCanvas = () => {
+const createCanvas = (container: HTMLDivElement) => {
   const canvasEl = window.document.createElement('canvas');
   canvasEl.style.display = 'block';
-  canvasEl.style.width = '100%';
-  canvasEl.style.height = '100%';
+
+  canvasEl.width = container.clientWidth;
+  canvasEl.height = container.clientHeight;
 
   return canvasEl;
 };
@@ -33,16 +34,15 @@ export const createFieldRenderer = (targetEl: HTMLElement): FieldRenderer => {
 
   if (isWindow()) {
     const container = createContainer();
+    targetEl.appendChild(container);
+    updateContainerHeight(container);
 
-    const canvas = createCanvas();
+    const canvas = createCanvas(container);
     const canvasContext = canvas.getContext('2d');
 
     drawField(canvasContext);
-
     container.appendChild(canvas);
-    targetEl.appendChild(container);
 
-    updateContainerHeight(container);
     const handleOnResize = () => {
       updateContainerHeight(container);
     };
