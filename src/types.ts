@@ -1,8 +1,17 @@
 export interface FieldRenderer {
   container: HTMLDivElement;
   canvasContext: CanvasRenderingContext2D;
+  gameDimensions: GameDimensions;
   handleOnResize: () => void;
 }
+
+export interface GameDimensions {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+}
+
 export interface Team {
   name: string;
   coachName: string;
