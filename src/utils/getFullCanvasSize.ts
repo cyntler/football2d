@@ -1,4 +1,4 @@
-export const getCanvasSize = (
+export const getFullCanvasSize = (
   canvasContext: CanvasRenderingContext2D,
 ): [number, number] => {
   const width = canvasContext.canvas.width;
