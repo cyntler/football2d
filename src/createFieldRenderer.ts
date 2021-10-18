@@ -1,6 +1,6 @@
-import { FIELD_HEIGHT, FIELD_MARGIN, FIELD_WIDTH } from './constants';
-import { drawField } from './draw/drawField';
+import { FIELD_HEIGHT, FIELD_WIDTH } from './constants';
 import { FieldRenderer } from './types';
+import { getGameDimensions } from './utils/getGameDimensions';
 import { isWindow } from './utils/isWindow';
 
 const createContainer = () => {
@@ -28,31 +28,35 @@ const updateContainerHeight = (container: HTMLDivElement) => {
 };
 
 export const createFieldRenderer = (targetEl: HTMLElement): FieldRenderer => {
+  if (!isWindow()) {
+    throw new Error(`Football 2D should be run in the browser!`);
+  }
+
   if (!targetEl) {
     throw new Error(`Target HTML [${targetEl}] element doesn't exists!`);
   }
 
-  if (isWindow()) {
-    const container = createContainer();
-    targetEl.appendChild(container);
+  const container = createContainer();
+  targetEl.appendChild(container);
+  updateContainerHeight(container);
+
+  const canvas = createCanvas(container);
+  const canvasContext = canvas.getContext('2d');
+
+  container.appendChild(canvas);
+
+  const gameDimensions = getGameDimensions(canvasContext);
+
+  const handleOnResize = () => {
     updateContainerHeight(container);
+  };
 
-    const canvas = createCanvas(container);
-    const canvasContext = canvas.getContext('2d');
+  window.addEventListener('resize', handleOnResize);
 
-    drawField(canvasContext);
-    container.appendChild(canvas);
-
-    const handleOnResize = () => {
-      updateContainerHeight(container);
-    };
-
-    window.addEventListener('resize', handleOnResize);
-
-    return {
-      container,
-      canvasContext,
-      handleOnResize,
-    };
-  }
+  return {
+    container,
+    canvasContext,
+    handleOnResize,
+    gameDimensions,
+  };
 };
