@@ -5,26 +5,36 @@ import { isWindow } from './utils/isWindow';
 
 const createContainer = () => {
   const rootEl = window.document.createElement('div');
-  rootEl.style.width = `100%`;
+  rootEl.style.width = '100%';
+  rootEl.style.overflow = 'hidden';
 
   return rootEl;
 };
 
 const createCanvas = (container: HTMLDivElement) => {
-  const canvasEl = window.document.createElement('canvas');
-  canvasEl.style.display = 'block';
+  const { width, height } = container.getBoundingClientRect();
 
-  canvasEl.width = container.clientWidth;
-  canvasEl.height = container.clientHeight;
+  const canvasEl = window.document.createElement('canvas');
+  canvasEl.width = width;
+  canvasEl.height = height;
+  canvasEl.style.display = 'block';
 
   return canvasEl;
 };
 
 const calculateContainerHeight = (container: HTMLDivElement) =>
-  (FIELD_HEIGHT / FIELD_WIDTH) * container.clientWidth;
+  (FIELD_HEIGHT / FIELD_WIDTH) * container.getBoundingClientRect().width;
 
-const updateContainerHeight = (container: HTMLDivElement) => {
-  container.style.height = `${calculateContainerHeight(container)}px`;
+const updateCanvasDimensions = (
+  canvas: HTMLCanvasElement,
+  container: HTMLDivElement,
+) => {
+  const { width } = container.getBoundingClientRect();
+
+  if (canvas.width !== width) {
+    canvas.width = width;
+  }
+  canvas.height = calculateContainerHeight(container);
 };
 
 export const createFieldRenderer = (targetEl: HTMLElement): FieldRenderer => {
@@ -38,17 +48,15 @@ export const createFieldRenderer = (targetEl: HTMLElement): FieldRenderer => {
 
   const container = createContainer();
   targetEl.appendChild(container);
-  updateContainerHeight(container);
 
   const canvas = createCanvas(container);
   const canvasContext = canvas.getContext('2d');
 
   container.appendChild(canvas);
-
-  const gameDimensions = getGameDimensions(canvasContext);
+  updateCanvasDimensions(canvas, container);
 
   const handleOnResize = () => {
-    updateContainerHeight(container);
+    updateCanvasDimensions(canvas, container);
   };
 
   window.addEventListener('resize', handleOnResize);
@@ -57,6 +65,5 @@ export const createFieldRenderer = (targetEl: HTMLElement): FieldRenderer => {
     container,
     canvasContext,
     handleOnResize,
-    gameDimensions,
   };
 };
