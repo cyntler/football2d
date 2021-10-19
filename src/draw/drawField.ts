@@ -7,6 +7,7 @@ import { GameDimensions } from '../types';
 import { getFullCanvasSize } from '../utils/getFullCanvasSize';
 import { drawFieldGrass } from './drawFieldGrass';
 import { drawFieldMainLines } from './drawFieldMainLines';
+import { drawFieldCenterLine } from './drawFieldCenterLine';
 import { drawFieldCorners } from './drawFieldCorners';
 
 export const drawField = (
@@ -14,17 +15,11 @@ export const drawField = (
   gameDimensions: GameDimensions,
 ) => {
   const [fullCanvasWidth, fullCanvasHeight] = getFullCanvasSize(canvasContext);
-  const { x, y, width, height } = gameDimensions;
+  const { x, width } = gameDimensions;
 
   drawFieldGrass(canvasContext);
   drawFieldMainLines(canvasContext, gameDimensions);
-
-  canvasContext.fillStyle = FIELD_ACCENT_COLOR;
-  canvasContext.beginPath();
-  canvasContext.moveTo(fullCanvasWidth / 2, y);
-  canvasContext.lineTo(fullCanvasWidth / 2, height);
-  canvasContext.stroke();
-  canvasContext.closePath();
+  drawFieldCenterLine(canvasContext, gameDimensions);
 
   canvasContext.beginPath();
   canvasContext.arc(
