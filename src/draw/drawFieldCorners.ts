@@ -1,4 +1,5 @@
 import { GameDimensions } from '../types';
+import { calculateValueDependsGameDimension } from '../utils/calculateValueDependsGameDimension';
 
 export const drawFieldCorners = (
   canvasContext: CanvasRenderingContext2D,
@@ -6,23 +7,32 @@ export const drawFieldCorners = (
 ) => {
   const { x, y, width, height } = gameDimensions;
 
+  const cornerRadius = calculateValueDependsGameDimension(1, gameDimensions);
+
   canvasContext.beginPath();
-  canvasContext.arc(x, y, 10, 0, 0.5 * Math.PI, false);
+  canvasContext.arc(x, y, cornerRadius, 0, 0.5 * Math.PI, false);
   canvasContext.stroke();
   canvasContext.closePath();
 
   canvasContext.beginPath();
-  canvasContext.arc(x, height, 10, 0, -0.5 * Math.PI, true);
+  canvasContext.arc(x, height, cornerRadius, 0, -0.5 * Math.PI, true);
   canvasContext.stroke();
   canvasContext.closePath();
 
   canvasContext.beginPath();
-  canvasContext.arc(width, y, 10, 0.5 * Math.PI, 1 * Math.PI, false);
+  canvasContext.arc(width, y, cornerRadius, 0.5 * Math.PI, Math.PI, false);
   canvasContext.stroke();
   canvasContext.closePath();
 
   canvasContext.beginPath();
-  canvasContext.arc(width, height, 10, 1 * Math.PI, 1.5 * Math.PI, false);
+  canvasContext.arc(
+    width,
+    height,
+    cornerRadius,
+    1 * Math.PI,
+    1.5 * Math.PI,
+    false,
+  );
   canvasContext.stroke();
   canvasContext.closePath();
 };
