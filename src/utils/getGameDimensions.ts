@@ -1,11 +1,12 @@
 import { FIELD_MARGIN } from '../constants';
-import { getFullCanvasSize } from './getFullCanvasSize';
+import { getFullCanvasDimensions } from './getFullCanvasDimensions';
 import { GameDimensions } from '../types';
 
 export const getGameDimensions = (
   canvasContext: CanvasRenderingContext2D,
 ): GameDimensions => {
-  const [fullCanvasWidth, fullCanvasHeight] = getFullCanvasSize(canvasContext);
+  const { fullCanvasWidth, fullCanvasHeight } =
+    getFullCanvasDimensions(canvasContext);
 
   const x = FIELD_MARGIN;
   const y = FIELD_MARGIN;
