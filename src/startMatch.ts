@@ -1,11 +1,7 @@
-import { getFullCanvasSize } from './utils/getFullCanvasSize';
 import { FieldRenderer, Team } from './types';
+import { clearCanvas } from './utils/clearCanvas';
 import { drawField } from './draw/drawField';
 import { getGameDimensions } from './utils/getGameDimensions';
-
-const clearCanvas = (canvasContext: CanvasRenderingContext2D) => {
-  canvasContext.clearRect(0, 0, ...getFullCanvasSize(canvasContext));
-};
 
 export const startMatch = (
   fieldRenderer: FieldRenderer,
@@ -18,7 +14,11 @@ export const startMatch = (
   clearCanvas(canvasContext);
   drawField(canvasContext, gameDimensions);
 
-  requestAnimationFrame(() => {
+  const animationFrame = requestAnimationFrame(() => {
     startMatch(fieldRenderer, homeTeam, awayTeam);
   });
+
+  return {
+    animationFrame,
+  };
 };
