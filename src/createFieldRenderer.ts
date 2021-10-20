@@ -1,11 +1,11 @@
 import { FIELD_HEIGHT, FIELD_WIDTH } from './constants';
 import { FieldRenderer } from './types';
-import { getGameDimensions } from './utils/getGameDimensions';
 import { isWindow } from './utils/isWindow';
 
 const createContainer = () => {
   const rootEl = window.document.createElement('div');
   rootEl.style.width = '100%';
+  rootEl.style.minWidth = '350px';
   rootEl.style.overflow = 'hidden';
 
   return rootEl;
