@@ -17,12 +17,13 @@
   "type": "module",
   "scripts": {
     "start": "webpack serve -c ./webpack.config.preview.mjs --open",
-    "build": "webpack && tsc",
+    "build": "webpack && tsc --emitDeclarationOnly",
     "lint": "eslint",
-    "test": "jest",
-    "checkPrettier": "prettier check ./src",
-    "checkTypes": "tsc --noEmit",
-    "prepublishOnly": "npm run build"
+    "test": "jest --passWithNoTests",
+    "check-prettier": "prettier --check ./src",
+    "check-types": "tsc --noEmit",
+    "prepublishOnly": "npm run build",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@babel/core": "^7.15.8",
@@ -37,6 +38,7 @@
     "webpack": "^5.58.2",
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.3.1",
-    "webpack-node-externals": "^3.0.0"
+    "webpack-node-externals": "^3.0.0",
+    "husky": "^6.0.0"
   }
 }
