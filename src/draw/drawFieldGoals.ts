@@ -16,7 +16,7 @@ export const drawFieldGoals = (
     gameDimensions,
   );
 
-  canvasContext.lineWidth = FIELD_GOAL_WIDTH;
+  canvasContext.lineWidth = FIELD_GOAL_WIDTH * (width / 1300);
 
   const leftGoalX = x - canvasContext.lineWidth / 2;
   canvasContext.beginPath();
