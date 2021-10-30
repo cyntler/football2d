@@ -1,0 +1,25 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Read .nvmrc
+        run: echo NVMRC=`cat .nvmrc` >> $GITHUB_ENV
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2.4.1
+        with:
+          node-version: ${{ env.NVMRC }}
+      - name: Run a linter
+        run: npm run lint
+      - name: Run tests
+        run: npm run test
+      - name: Run a Prettier checker
+        run: npm run check-prettier
+      - name: Run a TS types checker
+        run: npm run check-types
