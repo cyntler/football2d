@@ -5,18 +5,19 @@ import { getGameDimensions } from './utils/getGameDimensions';
 
 export const startMatch = (
   fieldRenderer: FieldRenderer,
-  homeTeam: Team,
-  awayTeam: Team,
+  _homeTeam: Team,
+  _awayTeam: Team,
 ) => {
   const { canvasContext } = fieldRenderer;
   const gameDimensions = getGameDimensions(canvasContext);
 
-  clearCanvas(canvasContext);
-  drawField(canvasContext, gameDimensions);
+  const run = () => {
+    clearCanvas(canvasContext);
+    drawField(canvasContext, gameDimensions);
+  };
 
-  const animationFrame = requestAnimationFrame(() => {
-    startMatch(fieldRenderer, homeTeam, awayTeam);
-  });
+  run();
+  const animationFrame = requestAnimationFrame(run);
 
   return {
     animationFrame,
