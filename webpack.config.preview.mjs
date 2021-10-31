@@ -10,6 +10,9 @@ export default {
     filename: 'bundle.[fullhash].js',
     publicPath: '/',
   },
+  devServer: {
+    historyApiFallback: true,
+  },
   resolve: {
     extensions: ['.js', '.json', '.ts'],
   },
