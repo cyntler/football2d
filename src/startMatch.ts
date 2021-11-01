@@ -9,15 +9,17 @@ export const startMatch = (
   _awayTeam: Team,
 ) => {
   const { canvasContext } = fieldRenderer;
-  const gameDimensions = getGameDimensions(canvasContext);
 
-  const run = () => {
+  const matchLoop = () => {
+    const gameDimensions = getGameDimensions(canvasContext);
+
     clearCanvas(canvasContext);
     drawField(canvasContext, gameDimensions);
+
+    return requestAnimationFrame(matchLoop);
   };
 
-  run();
-  const animationFrame = requestAnimationFrame(run);
+  const animationFrame = matchLoop();
 
   return {
     animationFrame,
