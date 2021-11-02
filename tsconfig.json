@@ -1,6 +1,10 @@
 {
   "compilerOptions": {
+    "module": "esnext",
+    "target": "esnext",
+    "moduleResolution": "node",
     "outDir": "./lib",
     "declaration": true
-  }
+  },
+  "exclude": ["./node_modules", "./lib"]
 }
