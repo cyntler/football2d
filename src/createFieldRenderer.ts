@@ -34,6 +34,7 @@ const updateCanvasDimensions = (
   if (canvas.width !== width) {
     canvas.width = width;
   }
+
   canvas.height = calculateContainerHeight(container);
 };
 

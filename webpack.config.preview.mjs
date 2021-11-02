@@ -26,4 +26,7 @@ export default {
       favicon: './src/preview/favicon.ico',
     }),
   ],
+  experiments: {
+    topLevelAwait: true,
+  },
 };
