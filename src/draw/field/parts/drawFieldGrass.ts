@@ -1,6 +1,6 @@
-import { FIELD_PRIMARY_COLOR, FIELD_SECONDARY_COLOR } from '../constants';
-import { GameDimensions } from '../types';
-import { getFullCanvasDimensions } from '../utils/getFullCanvasDimensions';
+import { FIELD_PRIMARY_COLOR, FIELD_SECONDARY_COLOR } from '@src/constants';
+import { GameDimensions } from '@src/types';
+import { getFullCanvasDimensions } from '@src/utils/getFullCanvasDimensions';
 
 export const drawFieldGrass = (
   canvasContext: CanvasRenderingContext2D,

@@ -1,7 +1,7 @@
-import { getFullCanvasDimensions } from '../utils/getFullCanvasDimensions';
-import { GameDimensions } from '../types';
-import { FIELD_ACCENT_COLOR, FIELD_LINE_WIDTH } from '../constants';
-import { calculateValueDependsGameDimension } from '../utils/calculateValueDependsGameDimension';
+import { getFullCanvasDimensions } from '@src/utils/getFullCanvasDimensions';
+import { GameDimensions } from '@src/types';
+import { FIELD_ACCENT_COLOR, FIELD_LINE_WIDTH } from '@src/constants';
+import { calculateValueDependsWidthGameDimension } from '@src/utils/calculateValueDependsGameDimension';
 
 export const drawFieldCenterLines = (
   canvasContext: CanvasRenderingContext2D,
@@ -35,7 +35,7 @@ export const drawFieldCenterLines = (
   canvasContext.arc(
     fullCanvasWidth / 2,
     fullCanvasHeight / 2,
-    calculateValueDependsGameDimension(9.15, gameDimensions),
+    calculateValueDependsWidthGameDimension(9.15, gameDimensions),
     0,
     2 * Math.PI,
     false,

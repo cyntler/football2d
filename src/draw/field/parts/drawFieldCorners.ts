@@ -1,5 +1,5 @@
-import { GameDimensions } from '../types';
-import { calculateValueDependsGameDimension } from '../utils/calculateValueDependsGameDimension';
+import { GameDimensions } from '@src/types';
+import { calculateValueDependsHeightGameDimension } from '@src/utils/calculateValueDependsGameDimension';
 
 export const drawFieldCorners = (
   canvasContext: CanvasRenderingContext2D,
@@ -7,7 +7,10 @@ export const drawFieldCorners = (
 ) => {
   const { x, y, width, height } = gameDimensions;
 
-  const cornerRadius = calculateValueDependsGameDimension(1, gameDimensions);
+  const cornerRadius = calculateValueDependsHeightGameDimension(
+    1,
+    gameDimensions,
+  );
 
   canvasContext.beginPath();
   canvasContext.arc(x, y, cornerRadius, 0, 0.5 * Math.PI, false);
