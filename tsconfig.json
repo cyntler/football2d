@@ -4,7 +4,10 @@
     "target": "esnext",
     "moduleResolution": "node",
     "outDir": "./lib",
-    "declaration": true
+    "declaration": true,
+    "paths": {
+      "@src/*": ["./src/*"]
+    }
   },
   "exclude": ["./node_modules", "./lib"]
 }

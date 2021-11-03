@@ -4,6 +4,10 @@ import nodeExternals from 'webpack-node-externals';
 
 export const currentDir = dirname(fileURLToPath(import.meta.url));
 
+export const alias = {
+  '@src': join(currentDir, '/src'),
+};
+
 export default {
   mode: 'production',
   entry: './src/index.ts',
@@ -18,6 +22,7 @@ export default {
   externals: [nodeExternals()],
   resolve: {
     extensions: ['.js', '.json', '.ts'],
+    alias,
   },
   module: {
     rules: [{ test: /\.ts$/, use: ['babel-loader'] }],

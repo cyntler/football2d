@@ -2,8 +2,8 @@ import {
   FIELD_ACCENT_COLOR,
   FIELD_LINE_WIDTH,
   FIELD_MARGIN,
-} from '../constants';
-import { GameDimensions } from '../types';
+} from '@src/constants';
+import { GameDimensions } from '@src/types';
 
 export const drawFieldMainLines = (
   canvasContext: CanvasRenderingContext2D,

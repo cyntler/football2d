@@ -1,7 +1,7 @@
-import { FIELD_GOAL_WIDTH, FIELD_LINE_WIDTH } from '../constants';
-import { GameDimensions } from '../types';
-import { calculateValueDependsGameDimension } from '../utils/calculateValueDependsGameDimension';
-import { getFullCanvasDimensions } from '../utils/getFullCanvasDimensions';
+import { FIELD_GOAL_WIDTH } from '@src/constants';
+import { GameDimensions } from '@src/types';
+import { calculateValueDependsWidthGameDimension } from '@src/utils/calculateValueDependsGameDimension';
+import { getFullCanvasDimensions } from '@src/utils/getFullCanvasDimensions';
 
 export const drawFieldGoals = (
   canvasContext: CanvasRenderingContext2D,
@@ -11,7 +11,7 @@ export const drawFieldGoals = (
   const { fullCanvasHeight } = getFullCanvasDimensions(canvasContext);
 
   const goalY = fullCanvasHeight / 2;
-  const halfOfGoalHeight = calculateValueDependsGameDimension(
+  const halfOfGoalHeight = calculateValueDependsWidthGameDimension(
     3.66,
     gameDimensions,
   );

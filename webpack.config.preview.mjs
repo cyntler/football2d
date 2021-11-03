@@ -1,6 +1,6 @@
 import { join } from 'path';
 import HtmlPlugin from 'html-webpack-plugin';
-import { currentDir } from './webpack.config.mjs';
+import { currentDir, alias } from './webpack.config.mjs';
 
 export default {
   mode: 'development',
@@ -15,6 +15,7 @@ export default {
   },
   resolve: {
     extensions: ['.js', '.json', '.ts'],
+    alias,
   },
   module: {
     rules: [{ test: /\.ts$/, use: ['babel-loader'] }],

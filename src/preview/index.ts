@@ -1,6 +1,6 @@
 import { waitForWindowReady } from './waitForWindowReady';
-import { createFieldRenderer, startMatch } from '../index';
-import { Team } from '../types';
+import { createFieldRenderer, startMatch } from '@src/index';
+import { Team } from '@src/types';
 
 await waitForWindowReady();
 

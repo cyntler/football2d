@@ -1,6 +1,6 @@
 import { FieldRenderer, Team } from './types';
 import { clearCanvas } from './utils/clearCanvas';
-import { drawField } from './draw/drawField';
+import { drawField } from './draw/field/drawField';
 import { getGameDimensions } from './utils/getGameDimensions';
 
 export const startMatch = (
