@@ -5,6 +5,7 @@ import { Team } from '@src/types';
 await waitForWindowReady();
 
 const rootEl = document.querySelector('main');
+const timeEl = document.querySelector('p');
 
 const fieldRenderer = createFieldRenderer(rootEl);
 
@@ -20,4 +21,10 @@ const awayTeam: Team = {
   players: [],
 };
 
-startMatch(fieldRenderer, homeTeam, awayTeam);
+const { matchTimer } = startMatch(fieldRenderer, homeTeam, awayTeam, {
+  speed: 100,
+});
+
+matchTimer.on('update', (value: string) => {
+  timeEl.textContent = value;
+});

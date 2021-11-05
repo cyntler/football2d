@@ -27,3 +27,7 @@ export type PlayerPosition =
   | 'defender'
   | 'midfielder'
   | 'forward';
+
+export interface MatchOptions {
+  speed: number;
+}
